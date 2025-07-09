@@ -1,0 +1,14 @@
+name: triple-triad-ff8
+
+services:
+
+    webapp:
+        build: .
+        image: triple-triad-ff8/webapp
+        container_name: triple-triad-ff8-webapp
+        ports:
+            - "8000:80"
+        restart: always
+        tty: true
+        volumes:
+            - ./src:/app/src

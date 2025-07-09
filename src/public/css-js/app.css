@@ -1,0 +1,84 @@
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+img, svg {
+  vertical-align: inherit;
+}
+
+html,
+body {
+    font-size: 13px;
+    background-color: #f1f1f1;
+}
+
+.container {
+	width: 648px;
+}
+
+#board {
+	background: url('../images/board.jpg') center center;
+	width: 600px;
+	height: 418px;
+	position: relative;
+}
+
+#board #cards-deck {
+	width: 291px;
+	height: 366px;
+	position: absolute;
+	top: 22px;
+	left: 155px;
+}
+
+#board #cards-deck .cards-holders {
+	margin: 0;
+	padding: 7px 0 0;
+}
+
+#board #cards-deck .cards-holders li {
+	display: inline-block;
+	width: 90px;
+	height: 120px;
+	margin: -3px 7px 0 0;
+}
+
+#board #cards-deck .cards-holders li .card-image {
+	width: 90px;
+	height: 120px;
+	cursor: pointer;
+}
+
+#board #cards-deck .cards-holders li img {
+	cursor: default;
+}
+
+#board .players-deck {
+	position: absolute;
+	top: 100px;
+	left: 50px;
+}
+
+#board .players-deck .cards-holders {
+	margin: 0;
+	padding: 0;
+}
+
+#board .players-deck.player-one {
+	left: inherit;
+	right: 50px;
+}
+
+#board .players-deck .cards-holders li {
+	display: block;
+	width: 93px;
+	height: 120px;
+	margin-top: -65px;
+}
+
+#board .players-deck .cards-holders li img {
+	cursor: pointer;
+}
