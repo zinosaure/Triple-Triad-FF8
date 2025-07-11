@@ -12,6 +12,9 @@ websocket.onopen = () => {
 websocket.onmessage = (event) => {
     const message = JSON.parse(event.data);
 
+    console.log(message)
+
+
     if (message.game_id != "") {
         if (message.type == "reload") {
             window.location.href = `/?game_id=${message.game_id}`;
@@ -39,7 +42,7 @@ websocket.onmessage = (event) => {
                 </li>`);
 
             for (var i = 0; i < 9; i++) {
-                $hold_ab.append(`<li id="td-${i}">
+                $hold_ab.append(`<li id="P${i}">
                     <div class="element"></div>
                     <div class="handicap"></div>
                     <div class="card-image" onclick="place_selected(this)">${((i) => {
@@ -90,28 +93,28 @@ function place_selected(target) {
                         .css({ marginLeft: 0 })
                 );
             $item.remove();
-            return bot_turn();
+            return next_turn("a");
         }
     });
 }
 
-function bot_turn() {
+function next_turn(pid) {
     let placement = {};
 
     $board.find("ul.cards-holders.ab li .card-image").each((i, e) => {
         const $item = $(e);
 
         if ($item.is(':empty'))
-            placement[i] = null;
+            placement[`P${i}`] = null;
         else {
             const $image = $item.find("img");
 
-            placement[i] = {
+            placement[`P${i}`] = {
                 cid: $image.attr("cid"),
                 pid: $image.attr("pid"),
             };
         }
     });
 
-    websocket.send(JSON.stringify({ "action": "next_move_bot", "placement": placement }));
+    websocket.send(JSON.stringify({ "action": `next_turn_${pid}`, "placement": placement }));
 }

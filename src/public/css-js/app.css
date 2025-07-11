@@ -20,9 +20,10 @@ body {
 }
 
 #board {
-	background: url('../images/board.jpg') center center;
-	width: 600px;
-	height: 418px;
+	background: url('../images/board.png') center center;
+	background-size: 100% 100%;
+	width: 595px;
+	height: 430px;
 	position: relative;
 }
 
@@ -30,8 +31,8 @@ body {
 	width: 291px;
 	height: 366px;
 	position: absolute;
-	top: 22px;
-	left: 155px;
+	top: 29px;
+	left: 153px;
 }
 
 #board #cards-deck .cards-holders {
@@ -59,7 +60,7 @@ body {
 #board .players-deck {
 	position: absolute;
 	top: 100px;
-	left: 50px;
+	left: 35px;
 }
 
 #board .players-deck .cards-holders {
@@ -69,7 +70,7 @@ body {
 
 #board .players-deck.player-one {
 	left: inherit;
-	right: 50px;
+	right: 35px;
 }
 
 #board .players-deck .cards-holders li {
