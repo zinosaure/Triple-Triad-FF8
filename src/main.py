@@ -14,7 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from jinja2 import Environment, FileSystemLoader
 
-from app.models.game import Opponent, Game
+from app.models.game import Hand, Game
 
 # FastAPI
 app = FastAPI(title="Triple Triad - FF8")
@@ -32,21 +32,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+h1: Hand = Hand(110001, [80, 20, 110, 98, 99])
+h2: Hand = Hand(100022, [88, 70, 103, 101, 100])
+game: Game = Game("xxxx-yyyyyy-zzzz", h1, h2)
+game.move(cell_id=1, hand_id=1, hold_id=1)
+game.move(cell_id=2, hand_id=2, hold_id=5)
+game.move(cell_id=5, hand_id=1, hold_id=5)
+game.move(cell_id=6, hand_id=2, hold_id=4)
 
-P1: Opponent = Opponent("P1")
-P2: Opponent = Opponent("P2")
-game: Game = Game("xxxx-yyyyyy-zzzz", P1, P2)
-P1.set_selected_cards({"H1": 50, "H2": 20, "H3": 110, "H4": 98, "H5": 99})
-P2.set_selected_cards({"H1": 88, "H2": 70, "H3": 103, "H4": 101, "H5": 100})
 
-game.place_on_board("C1.1", ("P1", "H5"))
-game.place_on_board("C1.2", ("P1", "H2"))
-game.place_on_board("C2.1", ("P2", "H5"))
 for name, cell in game.cells.items():
-    if cell.occupied:
-        print(name, ":", cell.occupied.opponent.id, cell.occupied.hand.card.name)
+    if cell.is_occupied():
+        print(name, ":", cell.hand, cell.card)
     else:
         print(name, ":")
+
+for notification in game.notifications:
+    print(notification)
 
 CARDS: list[dict[int, int | str]] = []
 GAMES: dict[str, dict[str, Any]] = {}
