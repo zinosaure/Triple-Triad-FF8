@@ -13,7 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from jinja2 import Environment, FileSystemLoader
 
-from app.models.game import TripleTriad, Card, Hand, Game
+from app.models.game import OppositeHand, TripleTriad, Card, Hand, Game
 
 # FastAPI
 app = FastAPI(title="Triple Triad - FF8")
@@ -47,7 +47,7 @@ def home(request: Request):
             "bot_lvl_3": "Bot level 3",
             "bot_lvl_4": "Bot level 4",
             "bot_lvl_5": "Bot level 5",
-            "human": "Friend — send the invitation link",
+            # "human": "Friend — send the invitation link",
         },
         "selection_rules": {
             "random": "Random",
@@ -72,15 +72,25 @@ def home(request: Request):
     )
 
 
+sessions: dict[str, dict[str, Any]] = {}
+
+
 @app.get("/prepare")
 @app.post("/prepare")
 async def prepare(request: Request, response: Response, session_id: str):
+    if session_id not in sessions:
+        sessions[session_id] = {
+            "timeout": time.time() + 600,
+            "selected_cards": [],
+        }
+
     try:
         payload = await request.form()
 
         if request.method == "POST":
             context = {
                 "v": time.time(),
+                "session_id": session_id,
                 "post_data": dict(payload),
                 "selections": TripleTriad.chunk(11),
             }
@@ -99,6 +109,11 @@ async def prepare(request: Request, response: Response, session_id: str):
 async def game(request: Request, response: Response, session_id: str):
     context = {
         "v": time.time(),
+        "session_id": session_id,
+        "hands": {
+            "b": Hand(1, [109, 108, 107, 106, 105]), # Hand(1, sessions[session_id]["selected_cards"]),
+            "a": OppositeHand(2, [104, 103, 102, 101, 100]), # OppositeHand(2, []),
+        },
     }
 
     return HTMLResponse(
@@ -109,89 +124,72 @@ async def game(request: Request, response: Response, session_id: str):
 
 @app.post("/api/select_this_card")
 async def select_this_card(request: Request, response: Response):
+    payload = await request.form()
+
+    if session_id := payload.get("session_id"):
+        if card_id := payload.get("card_id"):
+            sessions[session_id]["selected_cards"].append(int(card_id))
+
+            return {
+                "status": 1,
+                "card": Card(int(card_id), Hand.POSITION),
+            }
+
+
+@app.post("/api/unselect_this_card")
+async def unselect_this_card(request: Request, response: Response):
     try:
         payload = await request.form()
 
-        if card_id := payload.get("card_id"):
-            return {
-                "status": 1,
-                "card": Card(int(card_id) + 1, Hand.POSITION),
-            }
+        if session_id := payload.get("session_id"):
+            if card_id := payload.get("card_id"):
+                index = sessions[session_id]["selected_cards"].index(int(card_id))
+
+                if index > -1:
+                    del sessions[session_id]["selected_cards"][index]
+                    return {"status": 1}
     except Exception as e:
         print("Exception:", str(e))
 
     return {"status": 0}
 
 
-@app.post("/api/unselect_this_card")
-async def unselect_this_card(request: Request, response: Response):
-    return {"status": 1}
+@app.websocket("/ws")
+async def websocket(websocket: WebSocket, session_id: str):
+    try:
+        await websocket.accept()
 
+        if len(connections) >= 15:
+            return
 
-# @app.websocket("/ws")
-# async def websocket(websocket: WebSocket, session_id: str):
-#     try:
-#         game: Game = Game.load(session_id)
-#         await websocket.accept()
+        if websocket not in connections:
+            print(f"IP: {websocket.client[0]} - UUID: {session_id}")
+            connections.add(websocket)
+            # loop.create_task(timeout(websocket, unique_id))
+            # loop.create_task(listen(websocket, unique_id))
 
-#         if len(connections) >= 15:
-#             return
+        while True:
+            try:
+                payload = await websocket.receive_json()
 
-#         if websocket not in connections:
-#             print(f"IP: {websocket.client[0]} - UUID: {session_id}")
-#             connections.add(websocket)
-#             # loop.create_task(timeout(websocket, unique_id))
-#             # loop.create_task(listen(websocket, unique_id))
+                print(payload)
 
-#         while True:
-#             try:
-#                 payload = await websocket.receive_json()
+                if session_id not in sessions:
+                    return False
+                
+                session = sessions[session_id]
 
-#                 if session_id != "" and (action := payload.get("action")):
-#                     message: dict[str, Any] = {}
-
-#                     # if action == "select_cards":
-#                     #     message = {
-#                     #         "type": "reload",
-#                     #         "session_id": game.uniqid,
-#                     #         "board": {
-#                     #             "rules": {},
-#                     #             "hold": {
-#                     #                 "a": game.random_cards(Hand),
-#                     #                 "b": get_random_cards("b"),
-#                     #             },
-#                     #             "ondeck": [],
-#                     #             "score": {
-#                     #                 "a": 0,
-#                     #                 "b": 0,
-#                     #             },
-#                     #             "turn": random.choice(["B", "R"]),
-#                     #         },
-#                     #     }
-#                     # elif session_id in GAMES:
-#                     #     if action == "start-game":
-#                     #         GAMES[session_id]["type"] = "distribute"
-#                     #     elif action == "next_turn_a":
-#                     #         GAMES[session_id]["type"] = "prev_move_a"
-#                     #         print(payload)
-#                     #     elif action == "next_move_b":
-#                     #         GAMES[session_id]["type"] = "prev_move_b"
-#                     #         print(payload)
-#                     #     else:
-#                     #         GAMES[session_id] = {
-#                     #             "type": "unmatch",
-#                     #             "session_id": session_id,
-#                     #             "websocket_id": websocket_id,
-#                     #         }
-
-#                     await websocket.send_json(message)
-#                 await asyncio.sleep(1 / 30)
-#             except WebSocketDisconnect:
-#                 try:
-#                     return connections.remove(websocket)
-#                 except Exception:
-#                     return
-#             except Exception:
-#                 return
-#     except Exception:
-#         return
+                if action := payload.get("action"):
+                    await websocket.send_json({
+                        "action": action,
+                        "session_id": session_id,
+                    })
+            except WebSocketDisconnect:
+                try:
+                    return connections.remove(websocket)
+                except Exception:
+                    return
+            except Exception:
+                return
+    except Exception:
+        return

@@ -59,3 +59,102 @@ function unselect_this_card(card_item, card_id) {
         }
     });
 };
+
+/**
+ * Game 
+ */
+const $board = $("div#board");
+
+function start_websocket(session_id) {
+    let websocket = new WebSocket((window.location.protocol === 'https:' ? 'wss://' : 'ws://') + window.location.host + '/ws?session_id=' + session_id);
+
+    websocket.onopen = () => {
+        console.log("Game start!");
+    };
+    websocket.onmessage = (event) => {
+        const message = JSON.parse(event.data);
+
+        switch (message.action) {
+            case "opp_prepare_to_move":
+                break;
+            case "opp_move_to_zone":
+                break;
+        };
+    };
+    websocket.onerror = () => { };
+    websocket.onclose = () => { };
+
+    return websocket;
+}
+
+
+function opp_prepare_to_move(hold_id) {
+    $board.find(`ul.cards-holders.a li`).each((i, e) => {
+        const $item = $(e);
+        
+        $item.attr("is-selected", "0").find("img").css({ marginLeft: 0 });
+
+        if (parseInt($item.attr("hold-id")) == hold_id)
+            $item.attr("is-selected", "1").find("img").css({ marginLeft: 15 });
+    });
+}
+
+
+function opp_move_to_zone(cell_id) {
+    $board.find(`ul.cards-holders.ab li div.card-image#${cell_id}[is-occupied="0"]`).each((i, e) => {
+        const $target = $(e);
+
+        $board.find("ul.cards-holders.a li[is-selected='1']").each((i, e) => {
+            const $item = $(e);
+
+            $target.html(
+                $item.find("img").css({ marginLeft: 0 })
+            );
+            $target.attr("is-occupied", 1);
+            $item.remove();
+        });
+    });
+}
+
+function next_action(side, message) {
+    console.log(message);
+    setTimeout(() => opp_prepare_to_move(1), 1000);
+    setTimeout(() => opp_prepare_to_move(2), 3000);
+    setTimeout(() => opp_prepare_to_move(1), 3500);
+
+    setTimeout(() => opp_move_to_zone(3), 6000);
+}
+
+function prepare_to_move(target) {
+    $board.find("ul.cards-holders.b li").each((i, e) => {
+        $(e).attr("is-selected", "0").find("img").css({ marginLeft: 0 });
+
+        if (e == target)
+            $(e).attr("is-selected", "1").find("img").css({ marginLeft: -15 });
+    });
+}
+
+function move_zone(target) {
+    const $target = $(target);
+
+    $board.find("ul.cards-holders.b li[is-selected='1']").each((i, e) => {
+        const $item = $(e);
+
+        if ($target.is(':empty')) {
+            $target.html(
+                $item.find("img").css({ marginLeft: 0 })
+            );
+            $target.attr("is-occupied", 1);
+            $item.remove();
+
+            return next_action("b", JSON.stringify({
+                action: "move",
+                arguments: {
+                    cell_id: parseInt($target.attr("id")),
+                    hand_id: parseInt($item.attr("hand-id")),
+                    hold_id: parseInt($item.attr("hold-id")),
+                }
+            }));
+        }
+    });
+}

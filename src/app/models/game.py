@@ -26,12 +26,12 @@ class TripleTriad:
 
 
 with open(Path("/app/src/app/assets/cards-data.json")) as handle:
-    TripleTriad.Pack = {data["id"] + 1: data for data in json.load(handle)}
+    TripleTriad.Pack = {data["id"]: data for data in json.load(handle)}
 
 
 class Card:
     def __init__(self, id: int, hand_id: int):
-        assert 1 <= id <= 110
+        assert 0 <= id < 110
 
         self.name: str = ""
         self.top: int = 0
@@ -94,24 +94,20 @@ class OppositeHand(Hand):
     POSITION: int = 2
 
 
-class GameSession:
-    pass
-
-
 class Game:
     Singleton: dict[str, "Game"] = {}
-    rule_list = [
-        "open",
-        "closed",
-        "random",
-        "same",
-        "combo",
-        "wall",
-        "plus",
-        "swap",
-        "elemental",
-        "sudden_death",
-    ]
+    rule_list: dict[str, str] = {
+        "open": "Open",
+        "random": "Random",
+        "elemental": "Elemental",
+        "combo": "Combo",
+        "same": "Same",
+        "same_wall": "Same Wall",
+        "plus": "Plus",
+        "plus_wall": "Plus Wall",
+        "swap": "Swap",
+        "sudden_death": "Sudden Death",
+    }
 
     def __init__(self, uniqid: str):
         self.uniqid: str = uniqid
@@ -261,3 +257,7 @@ class Game:
 
         def send(self) -> dict[str, Any]:
             return self.__dict__
+
+
+class GameSession:
+    Sessions: dict[str, Game] = {}
