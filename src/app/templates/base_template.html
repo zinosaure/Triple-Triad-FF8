@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FF8 Triple Triad</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.png" />
+    <link rel="stylesheet" href="/public/css-js/fontawesome-free-6.1.2-web/css/all.min.css" />
+    <link rel="stylesheet" href="/public/css-js/bootswatch-5.3/bootstrap.min.css?v={{ v }}" />
+    <link rel="stylesheet" href="/public/css-js/app.css?v={{ v }}" />
+    <script src="/public/css-js/fontawesome-free-6.1.2-web/all.js" data-auto-a11y="true"></script>
+    {% block stylesheet %}{% endblock %}
+</head>
+
+<body>
+    <header class="pt-3">
+        <div class="container fs-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5">
+                            <a href="/?ref=logo">
+                                <img class="logo" src="/public/images/logo.png" />
+                            </a>
+                        </div>
+                        <div class="col-7">
+                            <div class="text-end">
+                                <a class="text-decoration-none text-dark" href="javascript:void(0)"
+                                    onclick="$('#main-menu').toggleClass('show');">
+                                    <i class="fa-solid fa-bars"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="main-menu" class="card mt-3 fs-6 d-none">
+                <div class="card-body">
+                    <ul class="text-start ps-0">
+                        <li class="list-group-item mb-1">
+                            <a class="text-decoration-none text-dark" href="/">Dashboard</a>
+                        </li>
+                        <li class="list-group-item mb-1">
+                            <a class="text-decoration-none text-dark" href="/timetables">Timetable</a>
+                        </li>
+                        <li class="list-group-item mb-1">
+                            <a class="text-decoration-none text-dark" href="/conversations">Messages (150)</a>
+                        </li>
+                        <li class="list-group-item">Credits (360 &euro;)</li>
+                    </ul>
+                    <hr />
+                    <ul class="text-start ps-0 mb-0">
+                        <li class="list-group-item mb-1">
+                            <a class="text-decoration-none text-dark" href="/settings">Settings</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="text-decoration-none text-dark" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block main_content %}{% endblock %}
+    </main>
+
+    <footer class="mb-5"></footer>
+
+    <script src="/public/css-js/jquery-3.7.0.min.js"></script>
+    <script src="/public/css-js/popper-2.11.6.min.js"></script>
+    <script src="/public/css-js/bootstrap-5.3.1/bootstrap.min.js"></script>
+    <script src="/public/css-js/popup.js?v={{ v }}"></script>
+    <script src="/public/css-js/app.js?v={{ v }}"></script>
+    {% block javascript %}{% endblock %}
+</body>
+
+</html>
