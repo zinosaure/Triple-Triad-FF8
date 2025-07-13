@@ -9,7 +9,7 @@ class TripleTriad:
     Pack: dict[int, dict[str, str | int]] = {}
 
     @staticmethod
-    def chunk(chunk_size: int = 10) -> list[dict[str, str | int]]:
+    def chunk(chunk_size: int = 11) -> list[dict[str, str | int]]:
         results = []
         new_dict = {}
 
@@ -30,7 +30,7 @@ with open(Path("/app/src/app/assets/cards-data.json")) as handle:
 
 
 class Card:
-    def __init__(self, id: int, hand: "Hand"):
+    def __init__(self, id: int, hand_id: int):
         assert 1 <= id <= 110
 
         self.name: str = ""
@@ -44,7 +44,7 @@ class Card:
         self.id = id
         filename = self.name.replace(" ", "_")
 
-        if hand.POSITION == OppositeHand.POSITION:
+        if hand_id == OppositeHand.POSITION:
             self.image: str = f"/public/images/cards/a/TT_{filename}.png"
         else:
             self.image: str = f"/public/images/cards/b/TT_{filename}.png"
@@ -70,11 +70,11 @@ class Hand:
 
         self.id: int = id
         self.hold_cards: dict[int, Card] = {
-            1: Card(selected_cards[0], self),
-            2: Card(selected_cards[1], self),
-            3: Card(selected_cards[2], self),
-            4: Card(selected_cards[3], self),
-            5: Card(selected_cards[4], self),
+            1: Card(selected_cards[0], self.POSITION),
+            2: Card(selected_cards[1], self.POSITION),
+            3: Card(selected_cards[2], self.POSITION),
+            4: Card(selected_cards[3], self.POSITION),
+            5: Card(selected_cards[4], self.POSITION),
         }
         self.unhold_cards: list[int] = []
 
@@ -92,6 +92,10 @@ class Hand:
 
 class OppositeHand(Hand):
     POSITION: int = 2
+
+
+class GameSession:
+    pass
 
 
 class Game:

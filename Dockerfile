@@ -7,6 +7,7 @@ RUN python -m ensurepip --upgrade
 RUN pip install fastapi
 RUN pip install uvicorn[standard]
 RUN pip install jinja2
+RUN pip install python-multipart
 
 COPY ./src /app/src
 WORKDIR /app/src

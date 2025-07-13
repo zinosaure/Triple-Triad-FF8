@@ -64,10 +64,32 @@
     </header>
 
     <main class="container">
-        {% block main_content %}{% endblock %}
+        <div class="card mt-3">
+            <div class="card-body">
+                {% block main_content %}{% endblock %}
+            </div>
+        </div>
     </main>
 
-    <footer class="mb-5"></footer>
+    <footer class="container mb-5">
+        <div class="card mt-3">
+            <div class="card-body">
+                <h3>Triple Triad (Fan Project)</h3>
+                <hr />
+                <div class="text-secondary">
+                    <p>
+                        Triple Triad is a digital card game recreation inspired by the original game from Final Fantasy
+                        VIII
+                        by Square Enix.
+                    </p>
+                    <p>
+                        This project is a non-commercial, fan-made tribute designed for educational and entertainment
+                        purposes only.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="/public/css-js/jquery-3.7.0.min.js"></script>
     <script src="/public/css-js/popper-2.11.6.min.js"></script>

@@ -1,120 +1,61 @@
-// Expects query param: ?game_id=...
-const game_id = (new URLSearchParams(window.location.search)).get('game_id');
-const websocket = new WebSocket((window.location.protocol === 'https:' ? 'wss://' : 'ws://') + window.location.host + '/ws?game_id=' + game_id);
-const $board = $("div#board");
+let selection_count = 0;
 
-websocket.onopen = () => {
-    if (game_id == null)
-        websocket.send(JSON.stringify({ "action": "setup" }));
-    else
-        websocket.send(JSON.stringify({ "action": "start-game" }));
-};
-websocket.onmessage = (event) => {
-    const message = JSON.parse(event.data);
+function select_this_card(list_item, card_id) {
+    const $list_item = $(list_item);
+    const $holder_b = $("ul.cards-holders.b");
+    const $button_start = $("button#btn-start-session");
+    let is_selected = parseInt($list_item.attr("is-selected"));
+    let max_selection = parseInt($list_item.attr("max-selection"));
 
-    console.log(message)
-
-
-    if (message.game_id != "") {
-        if (message.type == "reload") {
-            window.location.href = `/?game_id=${message.game_id}`;
-        } else if (message.type === "distribute") {
-            const $hold_a = $board.find("ul.cards-holders.a");
-            const $hold_b = $board.find("ul.cards-holders.b");
-            const $hold_ab = $board.find("ul.cards-holders.ab");
-
-            for (var i in message.board.hold.a)
-                $hold_a.append(`<li>
-                    <img 
-                        cid="${message.board.hold.a[i].id}" 
-                        pid="a" 
-                        src="${message.board.hold.a[i].image}"
-                    />
+    if (selection_count >= 5)
+        alert("5 cards maximum!");
+    else if (is_selected > max_selection)
+        alert("Insufficient quantity!")
+    else {
+        $.post("/api/select_this_card", { card_id: card_id, session_id: $("input[name='session_id']").val() }, function (data) {
+            if (data.status == 1) {
+                selection_count += 1;
+                is_selected += 1;
+                max_selection -= 1;
+                $list_item.attr("is-selected", is_selected);
+                $list_item.attr("max-selection", max_selection);
+                $list_item.addClass("is-selected")
+                $list_item.find('span.max-selection').text(max_selection);
+                $holder_b.append(`<li onclick="unselect_this_card(this, ${card_id})">
+                    <img src="${data.card.image}" />
                 </li>`);
 
-            for (var i in message.board.hold.b)
-                $hold_b.append(`<li is-selected="0" onclick="on_select(this)">
-                    <img 
-                        cid="${message.board.hold.b[i].id}" 
-                        pid="b" 
-                        src="${message.board.hold.b[i].image}"
-                    />
-                </li>`);
-
-            for (var i = 0; i < 9; i++) {
-                $hold_ab.append(`<li id="P${i}">
-                    <div class="element"></div>
-                    <div class="handicap"></div>
-                    <div class="card-image" onclick="place_selected(this)">${((i) => {
-                        if (typeof message.board.ondeck[i] !== 'undefined')
-                            return `<img 
-                                        cid="${message.board.ondeck[i].id}" 
-                                        pid="${message.board.ondeck[i].pid}" 
-                                        src="${message.board.ondeck[i].image}" 
-                                    />`;
-                        return '';
-                    })(i)}</div>
-                </li>`);
+                $button_start.prop("disabled", selection_count != 5);
+            } else {
+                alert(data.message);
             }
-        } else if (message.type === "error") {
-        }
+        });
     }
 };
-websocket.onerror = () => {
 
-};
-websocket.onclose = () => {
-};
+function unselect_this_card(card_item, card_id) {
+    const $card_item = $(card_item);
+    const $list_item = $(`ul.card-selection li#${card_id}`);
+    const $button_start = $("button#btn-start-session");
+    let is_selected = parseInt($list_item.attr("is-selected"));
+    let max_selection = parseInt($list_item.attr("max-selection"));
 
-function on_select(target) {
-    $board.find(".cards-holders.b li").each((i, e) => {
-        $(e).attr("is-selected", "0")
-            .find("img")
-            .css({ marginLeft: 0 });
+    $.post("/api/unselect_this_card", { card_id: card_id, session_id: $("input[name='session_id']").val() }, function (data) {
+        if (data.status == 1) {
+            selection_count -= 1;
+            is_selected -= 1;
+            max_selection += 1;
+            $list_item.attr("is-selected", is_selected);
+            $list_item.attr("max-selection", max_selection);
+            $list_item.find('span.max-selection').text(max_selection);
 
-        if (e == target)
-            $(e).attr("is-selected", "1")
-                .find("img")
-                .css({ marginLeft: -15 });
-    });
-}
+            if (is_selected == 0)
+                $list_item.removeClass("is-selected");
 
-function place_selected(target) {
-    const $target = $(target);
-
-    $board.find(".cards-holders.b li[is-selected='1']").each((i, e) => {
-        const $item = $(e);
-
-        if ($target.is(':empty')) {
-            $target
-                .html(
-                    $item
-                        .find("img")
-                        .css({ marginLeft: 0 })
-                );
-            $item.remove();
-            return next_turn("a");
+            $card_item.remove();
+            $button_start.prop("disabled", true);
+        } else {
+            alert(data.message);
         }
     });
-}
-
-function next_turn(pid) {
-    let placement = {};
-
-    $board.find("ul.cards-holders.ab li .card-image").each((i, e) => {
-        const $item = $(e);
-
-        if ($item.is(':empty'))
-            placement[`P${i}`] = null;
-        else {
-            const $image = $item.find("img");
-
-            placement[`P${i}`] = {
-                cid: $image.attr("cid"),
-                pid: $image.attr("pid"),
-            };
-        }
-    });
-
-    websocket.send(JSON.stringify({ "action": `next_turn_${pid}`, "placement": placement }));
-}
+};

@@ -17,13 +17,26 @@ body {
 }
 
 .container {
-	width: 648px;
+	width: 642px;
 }
 
 .logo {
 	height: 35px;
 	margin-bottom: -11px;
 }
+
+.max-height {
+	height: 405px;
+	overflow-y: auto;
+}
+
+li.select-card {
+	cursor: pointer;
+}
+
+li.select-card.is-selected {
+	font-weight: bold;
+} 
 
 #board {
 	background: url('../images/board.png') center center;
