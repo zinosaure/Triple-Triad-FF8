@@ -212,6 +212,47 @@ class Bot(Game):
         return (0, 0)
 
 
+class Session:
+    items: dict[tuple[str, str], "Session"] = {}
+
+    def __init__(self, host_id: str, opponent_id: str):
+        self.id: str = f"{host_id}-{opponent_id}"
+        self.host_id: str = host_id
+        self.access_used: str = host_id
+        self.timeout: int = int(time.time()) + 900
+        self.selected_cards: dict[str, list[int]] = {
+            host_id: [],
+            opponent_id: [],
+        }
+        Session.items[(host_id, opponent_id)] = self
+
+    def is_host(self) -> bool:
+        return self.access_used == self.host_id
+
+    def access(self, access_id: str | tuple[str, str]) -> "Session":
+        if not isinstance(access_id, tuple):
+            self.access_used = access_id
+        else:
+            self.access_used = ""
+
+        return self
+
+    @staticmethod
+    def load(session_id: tuple[str, str]) -> Optional["Session"]:
+        assert isinstance(session_id, tuple)
+        assert len(session_id) == 2
+
+        return Session.items.get(session_id)
+
+    @staticmethod
+    def join(access_id: str) -> Optional["Session"]:
+        assert isinstance(access_id, str)
+
+        for key, session in Session.items.items():
+            if access_id in key:
+                return session.access(access_id)
+
+
 class GameSession:
     Sessions: dict[str, "GameSession"] = {}
 
