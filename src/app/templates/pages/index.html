@@ -20,33 +20,12 @@
                             </div>
                             {% endfor %}
 
-                            <legend class="mt-3 mb-0">Selection Rules:</legend>
-                            {% for value, label in selection_rules.items() %}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input name="{{ value }}" class="form-check-input" type="checkbox" value="1" />
-                                    {{ label }}
-                                </label>
-                            </div>
-                            {% endfor %}
-
                             <legend class="mt-3 mb-0">Game Rules:</legend>
-                            {% for value, label in game_rules.items() %}
+                            {% for value, label in select_rules.items() %}
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input name="{{ value }}" class="form-check-input" type="checkbox" value="1" {% if
                                         loop.index==1 %}checked="" {% endif %} />
-                                    {{ label }}
-                                </label>
-                            </div>
-                            {% endfor %}
-
-                            <legend class="mt-3 mb-0">Draw Rules:</legend>
-                            {% for value, label in draw_rules.items() %}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input name="draw_rules[]" class="form-check-input" type="checkbox"
-                                        value="{{ value }}" />
                                     {{ label }}
                                 </label>
                             </div>

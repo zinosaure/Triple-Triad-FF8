@@ -12,7 +12,11 @@ function select_this_card(list_item, card_id) {
     else if (is_selected > max_selection)
         alert("Insufficient quantity!")
     else {
-        $.post("/api/select_this_card", { card_id: card_id, session_id: $("input[name='session_id']").val() }, function (data) {
+        $.post("/api/select_this_card", {
+            card_id: card_id,
+            hand_name: $("input[name='hand_name']").val(),
+            session_id: $("input[name='session_id']").val(),
+        }, function (data) {
             if (data.status == 1) {
                 selection_count += 1;
                 is_selected += 1;
@@ -40,7 +44,11 @@ function unselect_this_card(card_item, card_id) {
     let is_selected = parseInt($list_item.attr("is-selected"));
     let max_selection = parseInt($list_item.attr("max-selection"));
 
-    $.post("/api/unselect_this_card", { card_id: card_id, session_id: $("input[name='session_id']").val() }, function (data) {
+    $.post("/api/unselect_this_card", {
+        card_id: card_id,
+        hand_name: $("input[name='hand_name']").val(),
+        session_id: $("input[name='session_id']").val(),
+    }, function (data) {
         if (data.status == 1) {
             selection_count -= 1;
             is_selected -= 1;
@@ -65,11 +73,11 @@ function unselect_this_card(card_item, card_id) {
  */
 const $board = $("div#board");
 
-function start_websocket(session_id) {
+function start_websocket(session_id, hand_name) {
     let websocket = new WebSocket((window.location.protocol === 'https:' ? 'wss://' : 'ws://') + window.location.host + '/ws?session_id=' + session_id);
 
     websocket.onopen = () => {
-        console.log("Game start!");
+        websocket.send(JSON.stringify({ "action": "is_waiting" }));
     };
     websocket.onmessage = (event) => {
         const message = JSON.parse(event.data);
@@ -87,11 +95,10 @@ function start_websocket(session_id) {
     return websocket;
 }
 
-
 function opp_prepare_to_move(hold_id) {
     $board.find(`ul.cards-holders.a li`).each((i, e) => {
         const $item = $(e);
-        
+
         $item.attr("is-selected", "0").find("img").css({ marginLeft: 0 });
 
         if (parseInt($item.attr("hold-id")) == hold_id)
@@ -110,20 +117,14 @@ function opp_move_to_zone(cell_id) {
             $target.html(
                 $item.find("img").css({ marginLeft: 0 })
             );
-            $target.attr("is-occupied", 1);
+            $target.attr("is-occupied", PLAYRED);
             $item.remove();
+
+            return capture_cells(PLAYRED, {});
         });
     });
 }
 
-function next_action(side, message) {
-    console.log(message);
-    setTimeout(() => opp_prepare_to_move(1), 1000);
-    setTimeout(() => opp_prepare_to_move(2), 3000);
-    setTimeout(() => opp_prepare_to_move(1), 3500);
-
-    setTimeout(() => opp_move_to_zone(3), 6000);
-}
 
 function prepare_to_move(target) {
     $board.find("ul.cards-holders.b li").each((i, e) => {
@@ -144,17 +145,31 @@ function move_zone(target) {
             $target.html(
                 $item.find("img").css({ marginLeft: 0 })
             );
-            $target.attr("is-occupied", 1);
+            $target.attr("is-occupied", PLAYBLUE);
             $item.remove();
 
-            return next_action("b", JSON.stringify({
+            return capture_cells(PLAYBLUE, JSON.stringify({
                 action: "move",
                 arguments: {
                     cell_id: parseInt($target.attr("id")),
-                    hand_id: parseInt($item.attr("hand-id")),
+                    hand_name: parseInt($item.attr("hand-id")),
                     hold_id: parseInt($item.attr("hold-id")),
                 }
             }));
         }
     });
+}
+
+function capture_cells(hand_name, message) {
+    if (hand_name == PLAYBLUE) {
+        console.log(message);
+        setTimeout(() => opp_prepare_to_move(1), 1000);
+        setTimeout(() => opp_prepare_to_move(2), 3000);
+        setTimeout(() => opp_prepare_to_move(1), 3500);
+
+        setTimeout(() => opp_move_to_zone(3), 6000);
+    } else {
+
+    }
+
 }

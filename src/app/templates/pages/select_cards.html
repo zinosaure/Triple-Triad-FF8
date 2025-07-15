@@ -41,6 +41,7 @@
                                 </div>
                                 <div class="col-6 text-center">
                                     <form method="get" action="/game">
+                                        <input type="hidden" name="hand_name" value="{{ hand_name }}" />
                                         <input type="hidden" name="session_id" value="{{ session_id }}" />
                                         <button id="btn-start-session" class="btn btn-primary py-1" disabled="1"
                                             type="submit" autocomplete="off">
