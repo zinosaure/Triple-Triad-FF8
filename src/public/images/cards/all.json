@@ -1,0 +1,1652 @@
+{
+    "1": {
+        "bottom": 1,
+        "element": null,
+        "id": 1,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Geezard.png",
+            "b": "/public/images/cards/b/TT_Geezard.png"
+        },
+        "left": 5,
+        "level": 1,
+        "name": "Geezard",
+        "right": 4,
+        "top": 1
+    },
+    "2": {
+        "bottom": 1,
+        "element": null,
+        "id": 2,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Funguar.png",
+            "b": "/public/images/cards/b/TT_Funguar.png"
+        },
+        "left": 3,
+        "level": 1,
+        "name": "Funguar",
+        "right": 1,
+        "top": 5
+    },
+    "3": {
+        "bottom": 3,
+        "element": null,
+        "id": 3,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Bite_Bug.png",
+            "b": "/public/images/cards/b/TT_Bite_Bug.png"
+        },
+        "left": 5,
+        "level": 1,
+        "name": "Bite Bug",
+        "right": 3,
+        "top": 1
+    },
+    "4": {
+        "bottom": 1,
+        "element": null,
+        "id": 4,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Red_Bat.png",
+            "b": "/public/images/cards/b/TT_Red_Bat.png"
+        },
+        "left": 2,
+        "level": 1,
+        "name": "Red Bat",
+        "right": 1,
+        "top": 6
+    },
+    "5": {
+        "bottom": 1,
+        "element": null,
+        "id": 5,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Blobra.png",
+            "b": "/public/images/cards/b/TT_Blobra.png"
+        },
+        "left": 5,
+        "level": 1,
+        "name": "Blobra",
+        "right": 3,
+        "top": 2
+    },
+    "6": {
+        "bottom": 4,
+        "element": "Thunder",
+        "id": 6,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Gayla.png",
+            "b": "/public/images/cards/b/TT_Gayla.png"
+        },
+        "left": 4,
+        "level": 1,
+        "name": "Gayla",
+        "right": 1,
+        "top": 2
+    },
+    "7": {
+        "bottom": 4,
+        "element": null,
+        "id": 7,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Gesper.png",
+            "b": "/public/images/cards/b/TT_Gesper.png"
+        },
+        "left": 1,
+        "level": 1,
+        "name": "Gesper",
+        "right": 5,
+        "top": 1
+    },
+    "8": {
+        "bottom": 2,
+        "element": "Earth",
+        "id": 8,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Fastitocalon-F.png",
+            "b": "/public/images/cards/b/TT_Fastitocalon-F.png"
+        },
+        "left": 1,
+        "level": 1,
+        "name": "Fastitocalon-F",
+        "right": 5,
+        "top": 3
+    },
+    "9": {
+        "bottom": 6,
+        "element": null,
+        "id": 9,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Blood_Soul.png",
+            "b": "/public/images/cards/b/TT_Blood_Soul.png"
+        },
+        "left": 1,
+        "level": 1,
+        "name": "Blood Soul",
+        "right": 1,
+        "top": 2
+    },
+    "10": {
+        "bottom": 4,
+        "element": null,
+        "id": 10,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Caterchipillar.png",
+            "b": "/public/images/cards/b/TT_Caterchipillar.png"
+        },
+        "left": 3,
+        "level": 1,
+        "name": "Caterchipillar",
+        "right": 2,
+        "top": 4
+    },
+    "11": {
+        "bottom": 2,
+        "element": "Thunder",
+        "id": 11,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Cockatrice.png",
+            "b": "/public/images/cards/b/TT_Cockatrice.png"
+        },
+        "left": 6,
+        "level": 1,
+        "name": "Cockatrice",
+        "right": 1,
+        "top": 2
+    },
+    "12": {
+        "bottom": 3,
+        "element": null,
+        "id": 12,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Grat.png",
+            "b": "/public/images/cards/b/TT_Grat.png"
+        },
+        "left": 1,
+        "level": 2,
+        "name": "Grat",
+        "right": 1,
+        "top": 7
+    },
+    "13": {
+        "bottom": 2,
+        "element": null,
+        "id": 13,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Buel.png",
+            "b": "/public/images/cards/b/TT_Buel.png"
+        },
+        "left": 3,
+        "level": 2,
+        "name": "Buel",
+        "right": 2,
+        "top": 6
+    },
+    "14": {
+        "bottom": 3,
+        "element": null,
+        "id": 14,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Mesmerize.png",
+            "b": "/public/images/cards/b/TT_Mesmerize.png"
+        },
+        "left": 4,
+        "level": 2,
+        "name": "Mesmerize",
+        "right": 3,
+        "top": 5
+    },
+    "15": {
+        "bottom": 4,
+        "element": "Ice",
+        "id": 15,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Glacial_Eye.png",
+            "b": "/public/images/cards/b/TT_Glacial_Eye.png"
+        },
+        "left": 3,
+        "level": 2,
+        "name": "Glacial Eye",
+        "right": 1,
+        "top": 6
+    },
+    "16": {
+        "bottom": 5,
+        "element": null,
+        "id": 16,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Belhelmel.png",
+            "b": "/public/images/cards/b/TT_Belhelmel.png"
+        },
+        "left": 3,
+        "level": 2,
+        "name": "Belhelmel",
+        "right": 4,
+        "top": 3
+    },
+    "17": {
+        "bottom": 2,
+        "element": "Wind",
+        "id": 17,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Thrustaevis.png",
+            "b": "/public/images/cards/b/TT_Thrustaevis.png"
+        },
+        "left": 5,
+        "level": 2,
+        "name": "Thrustaevis",
+        "right": 3,
+        "top": 5
+    },
+    "18": {
+        "bottom": 3,
+        "element": "Poison",
+        "id": 18,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Anacondaur.png",
+            "b": "/public/images/cards/b/TT_Anacondaur.png"
+        },
+        "left": 5,
+        "level": 2,
+        "name": "Anacondaur",
+        "right": 1,
+        "top": 5
+    },
+    "19": {
+        "bottom": 5,
+        "element": "Thunder",
+        "id": 19,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Creeps.png",
+            "b": "/public/images/cards/b/TT_Creeps.png"
+        },
+        "left": 2,
+        "level": 2,
+        "name": "Creeps",
+        "right": 2,
+        "top": 5
+    },
+    "20": {
+        "bottom": 5,
+        "element": "Thunder",
+        "id": 20,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Grendel.png",
+            "b": "/public/images/cards/b/TT_Grendel.png"
+        },
+        "left": 2,
+        "level": 2,
+        "name": "Grendel",
+        "right": 4,
+        "top": 4
+    },
+    "21": {
+        "bottom": 1,
+        "element": null,
+        "id": 21,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Jellyeye.png",
+            "b": "/public/images/cards/b/TT_Jellyeye.png"
+        },
+        "left": 7,
+        "level": 2,
+        "name": "Jellyeye",
+        "right": 2,
+        "top": 3
+    },
+    "22": {
+        "bottom": 5,
+        "element": null,
+        "id": 22,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Grand_Mantis.png",
+            "b": "/public/images/cards/b/TT_Grand_Mantis.png"
+        },
+        "left": 3,
+        "level": 2,
+        "name": "Grand Mantis",
+        "right": 2,
+        "top": 5
+    },
+    "23": {
+        "bottom": 3,
+        "element": null,
+        "id": 23,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Forbidden.png",
+            "b": "/public/images/cards/b/TT_Forbidden.png"
+        },
+        "left": 2,
+        "level": 3,
+        "name": "Forbidden",
+        "right": 6,
+        "top": 6
+    },
+    "24": {
+        "bottom": 1,
+        "element": "Earth",
+        "id": 24,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Armadodo.png",
+            "b": "/public/images/cards/b/TT_Armadodo.png"
+        },
+        "left": 6,
+        "level": 3,
+        "name": "Armadodo",
+        "right": 3,
+        "top": 6
+    },
+    "25": {
+        "bottom": 5,
+        "element": "Poison",
+        "id": 25,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Tri-Face.png",
+            "b": "/public/images/cards/b/TT_Tri-Face.png"
+        },
+        "left": 5,
+        "level": 3,
+        "name": "Tri-Face",
+        "right": 5,
+        "top": 3
+    },
+    "26": {
+        "bottom": 1,
+        "element": "Earth",
+        "id": 26,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Fastitocalon.png",
+            "b": "/public/images/cards/b/TT_Fastitocalon.png"
+        },
+        "left": 3,
+        "level": 3,
+        "name": "Fastitocalon",
+        "right": 5,
+        "top": 7
+    },
+    "27": {
+        "bottom": 5,
+        "element": "Ice",
+        "id": 27,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Snow_Lion.png",
+            "b": "/public/images/cards/b/TT_Snow_Lion.png"
+        },
+        "left": 3,
+        "level": 3,
+        "name": "Snow Lion",
+        "right": 1,
+        "top": 7
+    },
+    "28": {
+        "bottom": 3,
+        "element": null,
+        "id": 28,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Ochu.png",
+            "b": "/public/images/cards/b/TT_Ochu.png"
+        },
+        "left": 3,
+        "level": 3,
+        "name": "Ochu",
+        "right": 6,
+        "top": 5
+    },
+    "29": {
+        "bottom": 2,
+        "element": "Fire",
+        "id": 29,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_SAM08G.png",
+            "b": "/public/images/cards/b/TT_SAM08G.png"
+        },
+        "left": 4,
+        "level": 3,
+        "name": "SAM08G",
+        "right": 6,
+        "top": 5
+    },
+    "30": {
+        "bottom": 7,
+        "element": "Fire",
+        "id": 30,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Death_Claw.png",
+            "b": "/public/images/cards/b/TT_Death_Claw.png"
+        },
+        "left": 2,
+        "level": 3,
+        "name": "Death Claw",
+        "right": 4,
+        "top": 4
+    },
+    "31": {
+        "bottom": 6,
+        "element": null,
+        "id": 31,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Cactuar.png",
+            "b": "/public/images/cards/b/TT_Cactuar.png"
+        },
+        "left": 3,
+        "level": 3,
+        "name": "Cactuar",
+        "right": 2,
+        "top": 6
+    },
+    "32": {
+        "bottom": 4,
+        "element": null,
+        "id": 32,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Tonberry.png",
+            "b": "/public/images/cards/b/TT_Tonberry.png"
+        },
+        "left": 4,
+        "level": 3,
+        "name": "Tonberry",
+        "right": 6,
+        "top": 3
+    },
+    "33": {
+        "bottom": 3,
+        "element": "Earth",
+        "id": 33,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Abyss_Worm.png",
+            "b": "/public/images/cards/b/TT_Abyss_Worm.png"
+        },
+        "left": 5,
+        "level": 3,
+        "name": "Abyss Worm",
+        "right": 2,
+        "top": 7
+    },
+    "34": {
+        "bottom": 6,
+        "element": null,
+        "id": 34,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Turtapod.png",
+            "b": "/public/images/cards/b/TT_Turtapod.png"
+        },
+        "left": 7,
+        "level": 4,
+        "name": "Turtapod",
+        "right": 3,
+        "top": 2
+    },
+    "35": {
+        "bottom": 4,
+        "element": null,
+        "id": 35,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Vysage.png",
+            "b": "/public/images/cards/b/TT_Vysage.png"
+        },
+        "left": 5,
+        "level": 4,
+        "name": "Vysage",
+        "right": 5,
+        "top": 6
+    },
+    "36": {
+        "bottom": 2,
+        "element": null,
+        "id": 36,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_T-Rexaur.png",
+            "b": "/public/images/cards/b/TT_T-Rexaur.png"
+        },
+        "left": 7,
+        "level": 4,
+        "name": "T-Rexaur",
+        "right": 6,
+        "top": 4
+    },
+    "37": {
+        "bottom": 6,
+        "element": "Fire",
+        "id": 37,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Bomb.png",
+            "b": "/public/images/cards/b/TT_Bomb.png"
+        },
+        "left": 3,
+        "level": 4,
+        "name": "Bomb",
+        "right": 7,
+        "top": 2
+    },
+    "38": {
+        "bottom": 4,
+        "element": "Thunder",
+        "id": 38,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Blitz.png",
+            "b": "/public/images/cards/b/TT_Blitz.png"
+        },
+        "left": 7,
+        "level": 4,
+        "name": "Blitz",
+        "right": 6,
+        "top": 1
+    },
+    "39": {
+        "bottom": 1,
+        "element": null,
+        "id": 39,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Wendigo.png",
+            "b": "/public/images/cards/b/TT_Wendigo.png"
+        },
+        "left": 6,
+        "level": 4,
+        "name": "Wendigo",
+        "right": 3,
+        "top": 7
+    },
+    "40": {
+        "bottom": 4,
+        "element": null,
+        "id": 40,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Torama.png",
+            "b": "/public/images/cards/b/TT_Torama.png"
+        },
+        "left": 4,
+        "level": 4,
+        "name": "Torama",
+        "right": 4,
+        "top": 7
+    },
+    "41": {
+        "bottom": 3,
+        "element": null,
+        "id": 41,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Imp.png",
+            "b": "/public/images/cards/b/TT_Imp.png"
+        },
+        "left": 6,
+        "level": 4,
+        "name": "Imp",
+        "right": 7,
+        "top": 3
+    },
+    "42": {
+        "bottom": 7,
+        "element": "Poison",
+        "id": 42,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Blue_Dragon.png",
+            "b": "/public/images/cards/b/TT_Blue_Dragon.png"
+        },
+        "left": 3,
+        "level": 4,
+        "name": "Blue Dragon",
+        "right": 2,
+        "top": 6
+    },
+    "43": {
+        "bottom": 6,
+        "element": "Earth",
+        "id": 43,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Adamantoise.png",
+            "b": "/public/images/cards/b/TT_Adamantoise.png"
+        },
+        "left": 6,
+        "level": 4,
+        "name": "Adamantoise",
+        "right": 5,
+        "top": 4
+    },
+    "44": {
+        "bottom": 4,
+        "element": "Fire",
+        "id": 44,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Hexadragon.png",
+            "b": "/public/images/cards/b/TT_Hexadragon.png"
+        },
+        "left": 3,
+        "level": 4,
+        "name": "Hexadragon",
+        "right": 5,
+        "top": 7
+    },
+    "45": {
+        "bottom": 6,
+        "element": null,
+        "id": 45,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Iron_Giant.png",
+            "b": "/public/images/cards/b/TT_Iron_Giant.png"
+        },
+        "left": 5,
+        "level": 5,
+        "name": "Iron Giant",
+        "right": 5,
+        "top": 6
+    },
+    "46": {
+        "bottom": 5,
+        "element": null,
+        "id": 46,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Behemoth.png",
+            "b": "/public/images/cards/b/TT_Behemoth.png"
+        },
+        "left": 7,
+        "level": 5,
+        "name": "Behemoth",
+        "right": 6,
+        "top": 3
+    },
+    "47": {
+        "bottom": 5,
+        "element": "Water",
+        "id": 47,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Chimera.png",
+            "b": "/public/images/cards/b/TT_Chimera.png"
+        },
+        "left": 3,
+        "level": 5,
+        "name": "Chimera",
+        "right": 6,
+        "top": 7
+    },
+    "48": {
+        "bottom": 2,
+        "element": null,
+        "id": 48,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_PuPu.png",
+            "b": "/public/images/cards/b/TT_PuPu.png"
+        },
+        "left": 1,
+        "level": 5,
+        "name": "PuPu",
+        "right": 10,
+        "top": 3
+    },
+    "49": {
+        "bottom": 6,
+        "element": null,
+        "id": 49,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Elastoid.png",
+            "b": "/public/images/cards/b/TT_Elastoid.png"
+        },
+        "left": 7,
+        "level": 5,
+        "name": "Elastoid",
+        "right": 2,
+        "top": 6
+    },
+    "50": {
+        "bottom": 7,
+        "element": null,
+        "id": 50,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_GIM47N.png",
+            "b": "/public/images/cards/b/TT_GIM47N.png"
+        },
+        "left": 4,
+        "level": 5,
+        "name": "GIM47N",
+        "right": 5,
+        "top": 5
+    },
+    "51": {
+        "bottom": 4,
+        "element": "Poison",
+        "id": 51,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Malboro.png",
+            "b": "/public/images/cards/b/TT_Malboro.png"
+        },
+        "left": 2,
+        "level": 5,
+        "name": "Malboro",
+        "right": 7,
+        "top": 7
+    },
+    "52": {
+        "bottom": 7,
+        "element": "Fire",
+        "id": 52,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Ruby_Dragon.png",
+            "b": "/public/images/cards/b/TT_Ruby_Dragon.png"
+        },
+        "left": 4,
+        "level": 5,
+        "name": "Ruby Dragon",
+        "right": 2,
+        "top": 7
+    },
+    "53": {
+        "bottom": 7,
+        "element": null,
+        "id": 53,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Elnoyle.png",
+            "b": "/public/images/cards/b/TT_Elnoyle.png"
+        },
+        "left": 6,
+        "level": 5,
+        "name": "Elnoyle",
+        "right": 3,
+        "top": 5
+    },
+    "54": {
+        "bottom": 7,
+        "element": null,
+        "id": 54,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Tonberry_King.png",
+            "b": "/public/images/cards/b/TT_Tonberry_King.png"
+        },
+        "left": 4,
+        "level": 5,
+        "name": "Tonberry King",
+        "right": 6,
+        "top": 4
+    },
+    "55": {
+        "bottom": 2,
+        "element": null,
+        "id": 55,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Wedge_Biggs.png",
+            "b": "/public/images/cards/b/TT_Wedge_Biggs.png"
+        },
+        "left": 7,
+        "level": 5,
+        "name": "Wedge Biggs",
+        "right": 6,
+        "top": 6
+    },
+    "56": {
+        "bottom": 8,
+        "element": null,
+        "id": 56,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Fujin_Raijin.png",
+            "b": "/public/images/cards/b/TT_Fujin_Raijin.png"
+        },
+        "left": 4,
+        "level": 6,
+        "name": "Fujin Raijin",
+        "right": 8,
+        "top": 2
+    },
+    "57": {
+        "bottom": 3,
+        "element": "Wind",
+        "id": 57,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Elvoret.png",
+            "b": "/public/images/cards/b/TT_Elvoret.png"
+        },
+        "left": 4,
+        "level": 6,
+        "name": "Elvoret",
+        "right": 8,
+        "top": 7
+    },
+    "58": {
+        "bottom": 7,
+        "element": null,
+        "id": 58,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_X-ATM092.png",
+            "b": "/public/images/cards/b/TT_X-ATM092.png"
+        },
+        "left": 3,
+        "level": 6,
+        "name": "X-ATM092",
+        "right": 8,
+        "top": 4
+    },
+    "59": {
+        "bottom": 8,
+        "element": null,
+        "id": 59,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Granaldo.png",
+            "b": "/public/images/cards/b/TT_Granaldo.png"
+        },
+        "left": 5,
+        "level": 6,
+        "name": "Granaldo",
+        "right": 2,
+        "top": 7
+    },
+    "60": {
+        "bottom": 8,
+        "element": "Poison",
+        "id": 60,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Gerogero.png",
+            "b": "/public/images/cards/b/TT_Gerogero.png"
+        },
+        "left": 3,
+        "level": 6,
+        "name": "Gerogero",
+        "right": 8,
+        "top": 1
+    },
+    "61": {
+        "bottom": 8,
+        "element": null,
+        "id": 61,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Iguion.png",
+            "b": "/public/images/cards/b/TT_Iguion.png"
+        },
+        "left": 2,
+        "level": 6,
+        "name": "Iguion",
+        "right": 2,
+        "top": 8
+    },
+    "62": {
+        "bottom": 4,
+        "element": null,
+        "id": 62,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Abadon.png",
+            "b": "/public/images/cards/b/TT_Abadon.png"
+        },
+        "left": 5,
+        "level": 6,
+        "name": "Abadon",
+        "right": 8,
+        "top": 6
+    },
+    "63": {
+        "bottom": 5,
+        "element": null,
+        "id": 63,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Trauma.png",
+            "b": "/public/images/cards/b/TT_Trauma.png"
+        },
+        "left": 6,
+        "level": 6,
+        "name": "Trauma",
+        "right": 8,
+        "top": 4
+    },
+    "64": {
+        "bottom": 4,
+        "element": null,
+        "id": 64,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Oilboyle.png",
+            "b": "/public/images/cards/b/TT_Oilboyle.png"
+        },
+        "left": 8,
+        "level": 6,
+        "name": "Oilboyle",
+        "right": 8,
+        "top": 1
+    },
+    "65": {
+        "bottom": 8,
+        "element": null,
+        "id": 65,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Shumi_Tribe.png",
+            "b": "/public/images/cards/b/TT_Shumi_Tribe.png"
+        },
+        "left": 4,
+        "level": 6,
+        "name": "Shumi Tribe",
+        "right": 5,
+        "top": 6
+    },
+    "66": {
+        "bottom": 8,
+        "element": null,
+        "id": 66,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Krysta.png",
+            "b": "/public/images/cards/b/TT_Krysta.png"
+        },
+        "left": 1,
+        "level": 6,
+        "name": "Krysta",
+        "right": 5,
+        "top": 7
+    },
+    "67": {
+        "bottom": 4,
+        "element": null,
+        "id": 67,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Propagator.png",
+            "b": "/public/images/cards/b/TT_Propagator.png"
+        },
+        "left": 8,
+        "level": 7,
+        "name": "Propagator",
+        "right": 4,
+        "top": 8
+    },
+    "68": {
+        "bottom": 4,
+        "element": null,
+        "id": 68,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Jumbo_Cactuar.png",
+            "b": "/public/images/cards/b/TT_Jumbo_Cactuar.png"
+        },
+        "left": 4,
+        "level": 7,
+        "name": "Jumbo Cactuar",
+        "right": 8,
+        "top": 8
+    },
+    "69": {
+        "bottom": 2,
+        "element": "Thunder",
+        "id": 69,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Tri-Point.png",
+            "b": "/public/images/cards/b/TT_Tri-Point.png"
+        },
+        "left": 8,
+        "level": 7,
+        "name": "Tri-Point",
+        "right": 5,
+        "top": 8
+    },
+    "70": {
+        "bottom": 6,
+        "element": null,
+        "id": 70,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Gargantua.png",
+            "b": "/public/images/cards/b/TT_Gargantua.png"
+        },
+        "left": 8,
+        "level": 7,
+        "name": "Gargantua",
+        "right": 6,
+        "top": 5
+    },
+    "71": {
+        "bottom": 7,
+        "element": null,
+        "id": 71,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Mobile_Type_8.png",
+            "b": "/public/images/cards/b/TT_Mobile_Type_8.png"
+        },
+        "left": 3,
+        "level": 7,
+        "name": "Mobile Type 8",
+        "right": 6,
+        "top": 8
+    },
+    "72": {
+        "bottom": 5,
+        "element": null,
+        "id": 72,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Sphinxara.png",
+            "b": "/public/images/cards/b/TT_Sphinxara.png"
+        },
+        "left": 8,
+        "level": 7,
+        "name": "Sphinxara",
+        "right": 3,
+        "top": 8
+    },
+    "73": {
+        "bottom": 5,
+        "element": null,
+        "id": 73,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Tiamat.png",
+            "b": "/public/images/cards/b/TT_Tiamat.png"
+        },
+        "left": 4,
+        "level": 7,
+        "name": "Tiamat",
+        "right": 8,
+        "top": 8
+    },
+    "74": {
+        "bottom": 8,
+        "element": null,
+        "id": 74,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_BGH251F2.png",
+            "b": "/public/images/cards/b/TT_BGH251F2.png"
+        },
+        "left": 5,
+        "level": 7,
+        "name": "BGH251F2",
+        "right": 7,
+        "top": 5
+    },
+    "75": {
+        "bottom": 4,
+        "element": null,
+        "id": 75,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Red_Giant.png",
+            "b": "/public/images/cards/b/TT_Red_Giant.png"
+        },
+        "left": 7,
+        "level": 7,
+        "name": "Red Giant",
+        "right": 8,
+        "top": 6
+    },
+    "76": {
+        "bottom": 7,
+        "element": null,
+        "id": 76,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Catoblepas.png",
+            "b": "/public/images/cards/b/TT_Catoblepas.png"
+        },
+        "left": 7,
+        "level": 7,
+        "name": "Catoblepas",
+        "right": 8,
+        "top": 1
+    },
+    "77": {
+        "bottom": 2,
+        "element": null,
+        "id": 77,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Ultima_Weapon.png",
+            "b": "/public/images/cards/b/TT_Ultima_Weapon.png"
+        },
+        "left": 8,
+        "level": 7,
+        "name": "Ultima Weapon",
+        "right": 7,
+        "top": 7
+    },
+    "78": {
+        "bottom": 8,
+        "element": null,
+        "id": 78,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Chubby_Chocobo.png",
+            "b": "/public/images/cards/b/TT_Chubby_Chocobo.png"
+        },
+        "left": 9,
+        "level": 8,
+        "name": "Chubby Chocobo",
+        "right": 4,
+        "top": 4
+    },
+    "79": {
+        "bottom": 7,
+        "element": null,
+        "id": 79,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Angelo.png",
+            "b": "/public/images/cards/b/TT_Angelo.png"
+        },
+        "left": 3,
+        "level": 8,
+        "name": "Angelo",
+        "right": 6,
+        "top": 9
+    },
+    "80": {
+        "bottom": 9,
+        "element": null,
+        "id": 80,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Gilgamesh.png",
+            "b": "/public/images/cards/b/TT_Gilgamesh.png"
+        },
+        "left": 6,
+        "level": 8,
+        "name": "Gilgamesh",
+        "right": 7,
+        "top": 3
+    },
+    "81": {
+        "bottom": 9,
+        "element": null,
+        "id": 81,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Mini_Mog.png",
+            "b": "/public/images/cards/b/TT_Mini_Mog.png"
+        },
+        "left": 2,
+        "level": 8,
+        "name": "Mini Mog",
+        "right": 3,
+        "top": 9
+    },
+    "82": {
+        "bottom": 8,
+        "element": null,
+        "id": 82,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Chicobo.png",
+            "b": "/public/images/cards/b/TT_Chicobo.png"
+        },
+        "left": 4,
+        "level": 8,
+        "name": "Chicobo",
+        "right": 4,
+        "top": 9
+    },
+    "83": {
+        "bottom": 9,
+        "element": "Thunder",
+        "id": 83,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Quezacotl.png",
+            "b": "/public/images/cards/b/TT_Quezacotl.png"
+        },
+        "left": 4,
+        "level": 8,
+        "name": "Quezacotl",
+        "right": 9,
+        "top": 2
+    },
+    "84": {
+        "bottom": 4,
+        "element": "Ice",
+        "id": 84,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Shiva.png",
+            "b": "/public/images/cards/b/TT_Shiva.png"
+        },
+        "left": 9,
+        "level": 8,
+        "name": "Shiva",
+        "right": 7,
+        "top": 6
+    },
+    "85": {
+        "bottom": 2,
+        "element": "Fire",
+        "id": 85,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Ifrit.png",
+            "b": "/public/images/cards/b/TT_Ifrit.png"
+        },
+        "left": 8,
+        "level": 8,
+        "name": "Ifrit",
+        "right": 6,
+        "top": 9
+    },
+    "86": {
+        "bottom": 6,
+        "element": null,
+        "id": 86,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Siren.png",
+            "b": "/public/images/cards/b/TT_Siren.png"
+        },
+        "left": 2,
+        "level": 8,
+        "name": "Siren",
+        "right": 9,
+        "top": 8
+    },
+    "87": {
+        "bottom": 9,
+        "element": "Earth",
+        "id": 87,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Sacred.png",
+            "b": "/public/images/cards/b/TT_Sacred.png"
+        },
+        "left": 9,
+        "level": 8,
+        "name": "Sacred",
+        "right": 1,
+        "top": 5
+    },
+    "88": {
+        "bottom": 2,
+        "element": "Earth",
+        "id": 88,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Minotaur.png",
+            "b": "/public/images/cards/b/TT_Minotaur.png"
+        },
+        "left": 9,
+        "level": 8,
+        "name": "Minotaur",
+        "right": 5,
+        "top": 9
+    },
+    "89": {
+        "bottom": 10,
+        "element": null,
+        "id": 89,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Carbuncle.png",
+            "b": "/public/images/cards/b/TT_Carbuncle.png"
+        },
+        "left": 4,
+        "level": 9,
+        "name": "Carbuncle",
+        "right": 4,
+        "top": 8
+    },
+    "90": {
+        "bottom": 8,
+        "element": null,
+        "id": 90,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Diablos.png",
+            "b": "/public/images/cards/b/TT_Diablos.png"
+        },
+        "left": 3,
+        "level": 9,
+        "name": "Diablos",
+        "right": 10,
+        "top": 5
+    },
+    "91": {
+        "bottom": 1,
+        "element": "Water",
+        "id": 91,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Leviathan.png",
+            "b": "/public/images/cards/b/TT_Leviathan.png"
+        },
+        "left": 7,
+        "level": 9,
+        "name": "Leviathan",
+        "right": 10,
+        "top": 7
+    },
+    "92": {
+        "bottom": 3,
+        "element": null,
+        "id": 92,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Odin.png",
+            "b": "/public/images/cards/b/TT_Odin.png"
+        },
+        "left": 5,
+        "level": 9,
+        "name": "Odin",
+        "right": 10,
+        "top": 8
+    },
+    "93": {
+        "bottom": 7,
+        "element": "Wind",
+        "id": 93,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Pandemona.png",
+            "b": "/public/images/cards/b/TT_Pandemona.png"
+        },
+        "left": 7,
+        "level": 9,
+        "name": "Pandemona",
+        "right": 1,
+        "top": 10
+    },
+    "94": {
+        "bottom": 6,
+        "element": null,
+        "id": 94,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Cerberus.png",
+            "b": "/public/images/cards/b/TT_Cerberus.png"
+        },
+        "left": 10,
+        "level": 9,
+        "name": "Cerberus",
+        "right": 4,
+        "top": 7
+    },
+    "95": {
+        "bottom": 4,
+        "element": "Holy",
+        "id": 95,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Alexander.png",
+            "b": "/public/images/cards/b/TT_Alexander.png"
+        },
+        "left": 2,
+        "level": 9,
+        "name": "Alexander",
+        "right": 10,
+        "top": 9
+    },
+    "96": {
+        "bottom": 7,
+        "element": "Fire",
+        "id": 96,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Phoenix.png",
+            "b": "/public/images/cards/b/TT_Phoenix.png"
+        },
+        "left": 10,
+        "level": 9,
+        "name": "Phoenix",
+        "right": 2,
+        "top": 7
+    },
+    "97": {
+        "bottom": 2,
+        "element": null,
+        "id": 97,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Bahamut.png",
+            "b": "/public/images/cards/b/TT_Bahamut.png"
+        },
+        "left": 6,
+        "level": 9,
+        "name": "Bahamut",
+        "right": 8,
+        "top": 10
+    },
+    "98": {
+        "bottom": 10,
+        "element": "Poison",
+        "id": 98,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Doomtrain.png",
+            "b": "/public/images/cards/b/TT_Doomtrain.png"
+        },
+        "left": 10,
+        "level": 9,
+        "name": "Doomtrain",
+        "right": 1,
+        "top": 3
+    },
+    "99": {
+        "bottom": 9,
+        "element": null,
+        "id": 99,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Eden.png",
+            "b": "/public/images/cards/b/TT_Eden.png"
+        },
+        "left": 10,
+        "level": 9,
+        "name": "Eden",
+        "right": 4,
+        "top": 4
+    },
+    "100": {
+        "bottom": 2,
+        "element": null,
+        "id": 100,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Ward.png",
+            "b": "/public/images/cards/b/TT_Ward.png"
+        },
+        "left": 8,
+        "level": 10,
+        "name": "Ward",
+        "right": 7,
+        "top": 10
+    },
+    "101": {
+        "bottom": 6,
+        "element": null,
+        "id": 101,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Kiros.png",
+            "b": "/public/images/cards/b/TT_Kiros.png"
+        },
+        "left": 10,
+        "level": 10,
+        "name": "Kiros",
+        "right": 7,
+        "top": 6
+    },
+    "102": {
+        "bottom": 3,
+        "element": null,
+        "id": 102,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Laguna.png",
+            "b": "/public/images/cards/b/TT_Laguna.png"
+        },
+        "left": 9,
+        "level": 10,
+        "name": "Laguna",
+        "right": 10,
+        "top": 5
+    },
+    "103": {
+        "bottom": 6,
+        "element": null,
+        "id": 103,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Selphie.png",
+            "b": "/public/images/cards/b/TT_Selphie.png"
+        },
+        "left": 4,
+        "level": 10,
+        "name": "Selphie",
+        "right": 8,
+        "top": 10
+    },
+    "104": {
+        "bottom": 10,
+        "element": null,
+        "id": 104,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Quistis.png",
+            "b": "/public/images/cards/b/TT_Quistis.png"
+        },
+        "left": 2,
+        "level": 10,
+        "name": "Quistis",
+        "right": 6,
+        "top": 9
+    },
+    "105": {
+        "bottom": 9,
+        "element": null,
+        "id": 105,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Irvine.png",
+            "b": "/public/images/cards/b/TT_Irvine.png"
+        },
+        "left": 10,
+        "level": 10,
+        "name": "Irvine",
+        "right": 6,
+        "top": 2
+    },
+    "106": {
+        "bottom": 10,
+        "element": null,
+        "id": 106,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Zell.png",
+            "b": "/public/images/cards/b/TT_Zell.png"
+        },
+        "left": 6,
+        "level": 10,
+        "name": "Zell",
+        "right": 5,
+        "top": 8
+    },
+    "107": {
+        "bottom": 2,
+        "element": null,
+        "id": 107,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Rinoa.png",
+            "b": "/public/images/cards/b/TT_Rinoa.png"
+        },
+        "left": 10,
+        "level": 10,
+        "name": "Rinoa",
+        "right": 10,
+        "top": 4
+    },
+    "108": {
+        "bottom": 3,
+        "element": null,
+        "id": 108,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Edea.png",
+            "b": "/public/images/cards/b/TT_Edea.png"
+        },
+        "left": 3,
+        "level": 10,
+        "name": "Edea",
+        "right": 10,
+        "top": 10
+    },
+    "109": {
+        "bottom": 10,
+        "element": null,
+        "id": 109,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Seifer.png",
+            "b": "/public/images/cards/b/TT_Seifer.png"
+        },
+        "left": 4,
+        "level": 10,
+        "name": "Seifer",
+        "right": 9,
+        "top": 6
+    },
+    "110": {
+        "bottom": 6,
+        "element": null,
+        "id": 110,
+        "image": {
+            "?": "/public/images/cards/back.png",
+            "a": "/public/images/cards/a/TT_Squall.png",
+            "b": "/public/images/cards/b/TT_Squall.png"
+        },
+        "left": 9,
+        "level": 10,
+        "name": "Squall",
+        "right": 4,
+        "top": 10
+    }
+}

@@ -1,41 +1,52 @@
 {% extends 'base_template.html' %}
 
 {% block main_content %}
-<div id="board">
-    <div class="players-deck player-two">
-        <ul class="cards-holders a">
-            {% for card in selected_cards.a %}
-            <li is-selected="0" hold-id="" hand-id="1">
-                <img src="{{ card.image }}" />
-            </li>
-            {% endfor %}
-        </ul>
+<div class="card mt-3">
+    <div class="card-body">
+        <div id="notification">
+            Share this link:
+            <input class="form-control mt-2" readonly onfocus="this.select()"
+                value="http://localhost:8000/prepare?session_id={{ session_id }}" />
+        </div>
     </div>
-    <div id="cards-deck">
-        <ul class="cards-holders ab">
-            {% for i in range(1, 10) %}
-            <li>
-                <div class="element"></div>
-                <div class="handicap"></div>
-                <div id="{{ i }}" hand-id="0" is-occupied="0" class="card-image" onclick="move_zone(this)"></div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="players-deck player-one">
-        <ul class="cards-holders b">
-            {% for card in selected_cards.b %}
-            <li is-selected="0" hold-id="" hand-id="1" onclick="prepare_to_move(this)">
-                <img src="{{ card.image }}" />
-            </li>
-            {% endfor %}
-        </ul>
+</div>
+<input type="hidden" name="access_id" value="{{ access_id }}" />
+<div class="card mt-3">
+    <div class="card-body">
+        <div id="board">
+            <div class="players-deck player-two">
+                <ul class="cards-holders a">
+                    {% for card in selected_cards.a %}
+                    <li is-selected="0" hold-id="" hand-id="1">
+                        <img src="{{ card.image }}" />
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="cards-deck">
+                <ul class="cards-holders ab">
+                    {% for i in range(1, 10) %}
+                    <li>
+                        <div class="element"></div>
+                        <div class="handicap"></div>
+                        <div id="{{ i }}" hand-id="0" is-occupied="0" class="card-image" onclick="move_zone(this)">
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="players-deck player-one">
+                <ul class="cards-holders b">
+                    {% for card in selected_cards.b %}
+                    <li is-selected="0" hold-id="" hand-id="1" onclick="prepare_to_move(this)">
+                        <img src="{{ card.image }}" />
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
 
-{% block javascript %}
-<script>
-    const websocket = start_websocket("{{ session_id }}", "{{ hand_name }}");
-</script>
-{% endblock %}
+{% block javascript %}{% endblock %}

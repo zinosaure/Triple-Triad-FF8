@@ -4,7 +4,8 @@ import time
 import random
 
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
+from collections import deque
 
 
 def short_uuid() -> str:
@@ -213,81 +214,56 @@ class Bot(Game):
 
 
 class Session:
-    items: dict[tuple[str, str], "Session"] = {}
+    sessions: dict[tuple[str, str], "Session"] = {}
 
     def __init__(self, host_id: str, opponent_id: str):
         self.id: str = f"{host_id}-{opponent_id}"
         self.host_id: str = host_id
-        self.access_used: str = host_id
+        self.access_id: str = host_id
         self.timeout: int = int(time.time()) + 900
         self.selected_cards: dict[str, list[int]] = {
             host_id: [],
             opponent_id: [],
         }
-        Session.items[(host_id, opponent_id)] = self
+        self.dequeue: deque = deque([], 100)
+        Session.sessions[(host_id, opponent_id)] = self
 
-    def is_host(self) -> bool:
-        return self.access_used == self.host_id
-
-    def access(self, access_id: str | tuple[str, str]) -> "Session":
-        if not isinstance(access_id, tuple):
-            self.access_used = access_id
-        else:
-            self.access_used = ""
-
+    def is_timeout(self) -> bool:
+        return time.time() > self.timeout
+    
+    def enqueue(self, access_id: str, did: str, args: Any = None) -> "Session":
+        self.dequeue.appendleft({"access_id": access_id, "did": did, "args": args})
         return self
+
+    def select_card(self, access_id: str, card_id: int) -> "Session":
+        if len(self.selected_cards[access_id]) < 5:
+            self.selected_cards[access_id].append(card_id)
+
+        return self.enqueue(access_id, "SELECTED_CARD", self.selected_cards[access_id])
+
+    def unselect_card(self, access_id: str, card_id: int) -> "Session":
+        index = self.selected_cards[access_id].index(card_id)
+
+        if index > -1:
+            del self.selected_cards[access_id][index]
+
+        return self.enqueue(access_id, "UNSELECTED_CARD", self.selected_cards[access_id])
+
+    def has_joined(self, access_id: str) -> "Session":
+        self.access_id = access_id
+        return self.enqueue(access_id, "JOINED_THE_GAME")
 
     @staticmethod
     def load(session_id: tuple[str, str]) -> Optional["Session"]:
         assert isinstance(session_id, tuple)
         assert len(session_id) == 2
 
-        return Session.items.get(session_id)
+        return Session.sessions.get(session_id)
 
     @staticmethod
     def join(access_id: str) -> Optional["Session"]:
         assert isinstance(access_id, str)
 
-        for key, session in Session.items.items():
+        for key, session in Session.sessions.items():
             if access_id in key:
-                return session.access(access_id)
-
-
-class GameSession:
-    Sessions: dict[str, "GameSession"] = {}
-
-    def __init__(self, hand_name_1: str, hand_name_2: str):
-        self.timeout: int = int(time.time()) + 900
-        self.bot: Bot = Bot()
-        self.hand_turn: str = random.choice([hand_name_1, hand_name_2])
-        self.selected_cards: dict[str, list[int]] = {
-            hand_name_1: [],
-            hand_name_2: [],
-        }
-        self.hand_names: dict[str, int] = {
-            hand_name_1: S.H1,
-            hand_name_2: S.H2,
-        }
-        self.actions: dict[str, str] = {
-            hand_name_1: "preparing",
-            hand_name_2: "preparing",
-        }
-        self.versus: str = "human"
-        self.selected_rules: list[str] = []
-
-    @staticmethod
-    def count_session() -> int:
-        return len(GameSession.Sessions)
-
-    @staticmethod
-    def create_session(hand_name_1: str, hand_name_2: str) -> "GameSession":
-        session_id: str = f"{hand_name_1}-{hand_name_2}"
-
-        if session_id not in GameSession.Sessions:
-            GameSession.Sessions[session_id] = GameSession(hand_name_1, hand_name_2)
-
-        return GameSession.Sessions[session_id]
-
-    @staticmethod
-    def load_session(session_id: str) -> Optional["GameSession"]:
-        return GameSession.Sessions.get(session_id)
+                return session.has_joined(access_id)

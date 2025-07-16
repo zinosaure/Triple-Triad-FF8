@@ -12,8 +12,8 @@ svg {
 
 html,
 body {
-	font-size: 13px;
-	background-color: #f1f1f1;
+	font-size: 14px;
+	background-color: #42414d;
 }
 
 .container {
@@ -28,6 +28,11 @@ body {
 .max-height {
 	height: 405px;
 	overflow-y: auto;
+}
+
+input, textarea, select {
+	background-color: #42414d !important;
+	color: #ffffff !important;
 }
 
 li.select-card {

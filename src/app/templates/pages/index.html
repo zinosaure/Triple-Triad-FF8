@@ -1,48 +1,52 @@
 {% extends 'base_template.html' %}
 
 {% block main_content %}
-<div id="board">
-    <div class="row">
-        <div class="col-8">
-            <div class="p-3">
-                <div class="card max-height">
-                    <div class="card-body">
-                        <form action="/prepare?session_id={{ session_id }}" method="post">
-                            <legend class="mt-0">Select mode:</legend>
+<div class="card mt-3">
+    <div class="card-body">
+        <div id="board">
+            <div class="row">
+                <div class="col-8">
+                    <div class="p-3">
+                        <div class="card max-height">
+                            <div class="card-body">
+                                <form action="/prepare?session_id={{ session_id }}" method="post">
+                                    <legend class="mt-0">Select mode:</legend>
 
-                            {% for value, label in select_modes.items() %}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input name="mode" class="form-check-input" type="radio" value="{{ value }}"
-                                        required {% if loop.index==1 %}checked="" {% endif %} />
-                                    {{ label }}
-                                </label>
-                            </div>
-                            {% endfor %}
+                                    {% for value, label in select_modes.items() %}
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="mode" class="form-check-input" type="radio" value="{{ value }}"
+                                                required {% if loop.index==1 %}checked="" {% endif %} />
+                                            {{ label }}
+                                        </label>
+                                    </div>
+                                    {% endfor %}
 
-                            <legend class="mt-3 mb-0">Game Rules:</legend>
-                            {% for value, label in select_rules.items() %}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input name="{{ value }}" class="form-check-input" type="checkbox" value="1" {% if
-                                        loop.index==1 %}checked="" {% endif %} />
-                                    {{ label }}
-                                </label>
-                            </div>
-                            {% endfor %}
+                                    <legend class="mt-3 mb-0">Game Rules:</legend>
+                                    {% for value, label in select_rules.items() %}
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="{{ value }}" class="form-check-input" type="checkbox" value="1"
+                                                {% if loop.index==1 %}checked="" {% endif %} />
+                                            {{ label }}
+                                        </label>
+                                    </div>
+                                    {% endfor %}
 
-                            <div class="mt-4">
-                                <hr />
-                                <button class="btn btn-primary py-2 w-100" type="submit">
-                                    Next
-                                </button>
+                                    <div class="mt-4">
+                                        <hr />
+                                        <button class="btn btn-primary py-2 w-100" type="submit">
+                                            Next
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
+                <div class="col-4"></div>
             </div>
         </div>
-        <div class="col-4"></div>
     </div>
 </div>
 {% endblock %}

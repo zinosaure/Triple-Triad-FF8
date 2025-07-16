@@ -1,10 +1,14 @@
+from email import message
 import os
 import sys
 import json
 import time
 import asyncio
 
-from typing import Any
+from typing import Any, Optional
+
+from click import pause
+
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request, Response
 from fastapi.websockets import WebSocketState
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -12,7 +16,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from jinja2 import Environment, FileSystemLoader
 
-from app.models.game import S, short_uuid, TripleTriad, Card, Hand, Game, GameSession
+from app.models.game import short_uuid, TripleTriad, Card, Hand, Session
 
 # FastAPI
 app = FastAPI(title="Triple Triad - FF8")
@@ -72,53 +76,60 @@ def home(request: Request):
 @app.get("/prepare")
 @app.post("/prepare")
 async def prepare(request: Request, session_id: str):
-    hand_name_1, hand_name_2 = session_id.split("-")
+    try:
+        host_id, opponent_id = session_id.split("-")
 
-    if request.method == "POST":
-        hand_name = hand_name_1
-        session = GameSession.create_session(hand_name_1, hand_name_2)
+        if request.method == "POST":
+            access_id = host_id
+            session = Session(host_id, opponent_id)
 
-        for k, v in dict(await request.form()).items():
-            if k == "mode":
-                session.versus = v
-            else:
-                session.selected_rules.append(k)
-    else:
-        hand_name = hand_name_2
+            # for k, v in dict(await request.form()).items():
+            #     if k == "mode":
+            #         session.versus = v
+            #     else:
+            #         session.selected_rules.append(k)
+        else:
+            access_id = opponent_id
 
-    if session := GameSession.load_session(session_id):
-        session.selected_cards[hand_name] = []
+        if session := Session.join(access_id):
+            session.selected_cards[access_id] = []
+            context = {
+                "v": time.time(),
+                "access_id": access_id,
+                "session_id": session.id,
+                "chunked_selections": TripleTriad.chunk(11),
+            }
 
-        context = {
-            "v": time.time(),
-            "hand_name": hand_name,
-            "session_id": session_id,
-            "selections": TripleTriad.chunk(11),
-        }
-
-        return HTMLResponse(
-            status_code=200,
-            content=env.get_template("pages/select_cards.html").render(context),
-        )
+            return HTMLResponse(
+                status_code=200,
+                content=env.get_template("pages/select_cards.html").render(context),
+            )
+    except Exception:
+        pass
 
     return RedirectResponse(f"/?session_expired={session_id}", 307)
 
 
 @app.get("/game")
-async def game(request: Request, hand_name: str, session_id: str):
+@app.post("/game")
+async def game(request: Request, session_id: str):
     try:
-        if session := GameSession.load_session(session_id):
-            session.actions[hand_name] = "is_waiting"
+        host_id, opponent_id = session_id.split("-")
+        payload = await request.form()
+        access_id = payload.get("access_id")
+
+        if (session := Session.load((host_id, opponent_id))) and access_id:
             selected_cards = {"a": [], "b": []}
 
-            for _hand_name, _selected_cards in session.selected_cards.items():
-                if _hand_name == hand_name:
+            for _access_id, _selected_cards in session.selected_cards.items():
+                if _access_id == access_id:
                     selected_cards["b"] = [Card(id, "b") for id in _selected_cards]
                 else:
                     selected_cards["a"] = [Card(id, "a") for id in _selected_cards]
 
             context = {
                 "v": time.time(),
+                "access_id": access_id,
                 "session_id": session_id,
                 "selected_cards": selected_cards,
             }
@@ -130,89 +141,58 @@ async def game(request: Request, hand_name: str, session_id: str):
     except Exception:
         pass
 
-    return RedirectResponse(f"/?session_expired={session_id}", 307)
+    # return RedirectResponse(f"/?session_expired={session_id}", 307)
 
 
-@app.post("/api/select_this_card")
-async def select_this_card(request: Request):
-    try:
-        payload = await request.form()
-        card_id = payload.get("card_id")
-        hand_name = payload.get("hand_name")
-        session_id = payload.get("session_id")
-
-        if card_id and hand_name and session_id:
-            if session := GameSession.load_session(session_id):
-                session.selected_cards[hand_name].append(int(card_id))
-                return {
-                    "status": 1,
-                    "card": Card(int(card_id), Hand.TEAM_BLUE),
-                }
-    except Exception as e:
-        print("Exception:", str(e))
-
-    return {"status": 0}
+async def timeout(websocket: WebSocket, session: Session):
+    await asyncio.sleep(1)
 
 
-@app.post("/api/unselect_this_card")
-async def unselect_this_card(request: Request):
-    try:
-        payload = await request.form()
-        card_id = payload.get("card_id")
-        hand_name = payload.get("hand_name")
-        session_id = payload.get("session_id")
+async def listen(websocket: WebSocket, session: Session):
+    while True:
+        try:
+            d = await websocket.receive_json()
 
-        if card_id and hand_name and session_id and ():
-            if session := GameSession.load_session(session_id):
-                index = session.selected_cards[hand_name].index(int(card_id))
+            if (type := d.get("type")) and (access_id := d.get("access_id")):
+                if type == "select_card":
+                    session.select_card(access_id, d.get("card_id", 0))
+                elif type == "unselect_card":
+                    session.unselect_card(access_id, d.get("card_id", 0))
+        except (KeyboardInterrupt, WebSocketDisconnect):
+            if websocket in connections:
+                # await websocket.close()
+                return connections.remove(websocket)
 
-                if index > -1:
-                    del session.selected_cards[hand_name][index]
-                    return {"status": 1}
-    except Exception as e:
-        print("Exception:", str(e))
-
-    return {"status": 0}
+        if len(connections) == 0:
+            return
 
 
 @app.websocket("/ws")
 async def websocket(websocket: WebSocket, session_id: str):
-    try:
-        await websocket.accept()
+    await websocket.accept()
+    host_id, opponent_id = session_id.split("-")
 
-        if len(connections) >= 15:
+    if not (session := Session.load((host_id, opponent_id))) or len(connections) >= 15:
+        return await websocket.close()
+
+    if websocket not in connections:
+        print(f"IP: {websocket.client[0]} - Session ID: {session_id}")
+        connections.add(websocket)
+        loop.create_task(listen(websocket, session))
+        # loop.create_task(timeout(websocket, session))
+
+    while True:
+        try:
+            while len(session.dequeue) > 0:
+                message = session.dequeue.pop()
+                print(message)
+                await websocket.send_json(message)
+
+            await asyncio.sleep(1)
+        except (KeyboardInterrupt, WebSocketDisconnect):
+            if websocket in connections:
+                # await websocket.close()
+                return connections.remove(websocket)
+
+        if len(connections) == 0:
             return
-
-        if websocket not in connections:
-            print(f"IP: {websocket.client[0]} - UUID: {session_id}")
-            connections.add(websocket)
-            # loop.create_task(timeout(websocket, unique_id))
-            # loop.create_task(listen(websocket, unique_id))
-
-        if not (session := GameSession.load_session(session_id)):
-            return websocket.close()
-
-        while True:
-            try:
-                payload = await websocket.receive_json()
-
-                if action := payload.get("action"):
-                    data = {}
-                    if action == "is_waiting":
-                        for hand_name, action in session.actions.items():
-                            if action == "prepapring":
-                                data = {
-                                    "response": "load_cards",
-                                    "selected_cards": session.selected_cards[hand_name],
-                                }
-
-                    await websocket.send_json(data)
-            except WebSocketDisconnect:
-                try:
-                    return connections.remove(websocket)
-                except Exception:
-                    return
-            except Exception:
-                return
-    except Exception:
-        return
